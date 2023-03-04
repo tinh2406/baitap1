@@ -7,7 +7,7 @@ def huanluyen(frame,l,r):
 
     khoanglang = frame[np.logical_or(x<l,x>r)]
     tiengnoi = frame[np.logical_and(x>l,x<r)]
-
+    print(max(khoanglang))
     return khoanglang,tiengnoi
 
 
@@ -65,4 +65,4 @@ def phandoan(signal,ste,f,l,r,nguong):
     for i in left:
         plt.axvline(x=i,color='yellow')
 
-    plt.show()
+    # plt.show()

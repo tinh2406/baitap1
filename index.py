@@ -17,13 +17,13 @@ def chuanHoa_STE(nameFile,where="TinHieuHuanLuyen"):
 
 #------------Danh cho phone_F2 ------------
 
-kl1,tn1 = huanluyen(chuanHoa_STE('phone_F2'),1.02,4.06)
+kl1,tn1 = huanluyen(chuanHoa_STE('phone_F2'),1.02,4.08)
 
 # #-------------Danh cho phone_M2---------------
-kl2,tn2 = huanluyen(chuanHoa_STE('phone_M2'),0.53,2.52)
+kl2,tn2 = huanluyen(chuanHoa_STE('phone_M2'),0.52,2.52)
 
 # #-------------Danh cho studio_F2---------------
-kl3,tn3 = huanluyen(chuanHoa_STE('studio_F2'),0.77,2.38)
+kl3,tn3 = huanluyen(chuanHoa_STE('studio_F2'),0.76,2.38)
 
 # #-------------Danh cho studio_M2---------------
 kl4,tn4 = huanluyen(chuanHoa_STE('studio_M2'),0.44,1.94)
@@ -38,12 +38,14 @@ tn = np.concatenate((tn1,tn2,tn3,tn4))
 # plt.bar(bin2[np.where(hist2>0)],hist2[np.where(hist2>0)],alpha=0.5,width=0.0000001)
 
 
-# plt.hist(tn[np.where(tn<0.01)],bins=100,alpha=0.5)
+# plt.hist(tn[np.where(tn<0.01)],bins=1000,alpha=0.5)
 # plt.hist(kl,bins=1000,alpha=0.5)
 
-
-arr = [min(tn)+i*(max(kl)-min(tn))/100 for i in range(100)]
+print(max(kl))
+arr = [min(tn)+i*(max(kl)-min(tn))/10000 for i in range(10000)]
 arr1 = [np.count_nonzero(tn<i)+np.count_nonzero(kl>i) for i in arr]
+
+print(arr1)
 
 x = arr[np.argmin(arr1)]
 print(x)
@@ -55,19 +57,19 @@ print(x)
 # plt.show()
 
 
-plt.figure()
-plot(chuanHoa_STE('phone_F2'),1.02,4.06,0.005,x)#0.004
+# plt.figure()
+# plot(chuanHoa_STE('phone_F2'),1.02,4.08,0.01,x)#0.004
 
-# #-------------Danh cho phone_M2---------------
-plt.figure()
-plot(chuanHoa_STE('phone_M2'),0.53,2.52,0.005,x)#0.002
+# # # #-------------Danh cho phone_M2---------------
+# plt.figure()
+# plot(chuanHoa_STE('phone_M2'),0.52,2.52,0.002,x)#0.002
 
-# #-------------Danh cho studio_F2---------------
-plt.figure()
-plot(chuanHoa_STE('studio_F2'),0.77,2.38,0.005,x)#0.0001
+# # # #-------------Danh cho studio_F2---------------
+# plt.figure()
+# plot(chuanHoa_STE('studio_F2'),0.76,2.38,0.01,x)#0.0001
 
-# #-------------Danh cho studio_M2---------------
-plt.figure()
-plot(chuanHoa_STE('studio_M2'),0.44,1.94,0.005,x)#0.001
+# # # #-------------Danh cho studio_M2---------------
+# plt.figure()
+# plot(chuanHoa_STE('studio_M2'),0.44,1.94,0.01,x)#0.001
 
-plt.show()
+# plt.show()
